@@ -38,9 +38,9 @@
 *  *Note, process may not be stable with GNUradio v3.8
 ## 2. Use the GNUradio NBFM transceiver flowgraph on this page
 ![GNUradio flowgraph for a NBFM transceiver](https://github.com/SSkySurfer/SDR_Learning/blob/main/NBFM_transceiver_Pluto_grc.png)
-<em align="center"> GNUradio flowgraph for a NBFM transceive </em>
+- <em align="center"> GNUradio flowgraph for a NBFM transceive </em>
 ![GUI to modify parameters in the transceiver flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/NBFM_gui.png)
-<em align="center">GUI to modify parameters in the transceiver flowgraph</em>
+- <em align="center">GUI to modify parameters in the transceiver flowgraph</em>
 
 ### 2.1. Download the grc flowgraph 
 #### 2.1.1. Download file named "NBFM_transceiver_Pluto.grc"
