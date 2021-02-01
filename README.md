@@ -1,6 +1,6 @@
 # SDR_Learning
 ## TABLE OF CONTENTS
-- [1. Steps to Install GNUradio] (#1-steps-to-install-gnuradio)
+- [1. Steps to Install GNUradio](#1-steps-to-install-GNUradio)
   * [1.1 Get started with GNU radio here](#11-get-started-with-gnu-radio-here)
 
   * [1.2. Learn about GNUradio and AD Pluto SDR drivers](#12-learn-about-gnuradio-and-ad-pluto-sdr-drivers)
@@ -21,9 +21,8 @@
   * [2.10. Modify the slider bars as required for other transmitters.](#210-modify-the-slider-bars-as-required-for-other-transmitters)
 - [3. Resources for Pluto SDRs](#3-resources-for-pluto-sdrs)
 
-## 1. Steps to Install GNUradio 
+## 1. Steps to Install GNUradio
 * Steps to Install GNUradio (v3.7) with PlutoSDR (Windows)
-## Table of Contents
 
 ### 1.1 Get started with GNU radio here 
 * - https://wiki.gnuradio.org/index.php/PlutoSDR_FMRadio
@@ -69,7 +68,7 @@
 #### 2.9.2. Start the flowgraph and talk into the mic. Listen to the voice on your handheld radio (or another SDR)
 ### 2.10. Modify the slider bars as required for other transmitters.
 
-### 3. Resources for Pluto SDRs
+## 3. Resources for Pluto SDRs
 * Paper on Pluto Architechture and GNUradio examples: https://peer.asee.org/incorporating-plutosdr-in-the-communication-laboratory-and-classroom-potential-or-pitfall.pdf 
 * Official Analog Devices PLUTO SDR links here: https://wiki.analog.com/university/tools/pluto/users 
 
