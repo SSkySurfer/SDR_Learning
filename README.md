@@ -22,20 +22,20 @@
 - [3. Resources for Pluto SDRs](#3-resources-for-pluto-sdrs)
 
 ## 1. Steps to Install GNUradio
-* Steps to Install GNUradio (v3.7) with PlutoSDR (Windows)
+- Steps to Install GNUradio (v3.7) with PlutoSDR (Windows)
 
 ### 1.1 Get started with GNU radio here 
-* - https://wiki.gnuradio.org/index.php/PlutoSDR_FMRadio
+- https://wiki.gnuradio.org/index.php/PlutoSDR_FMRadio
 
 ### 1.2. Learn about GNUradio and AD Pluto SDR drivers 
-* - https://wiki.gnuradio.org/index.php/PlutoSDR_Source 
+- https://wiki.gnuradio.org/index.php/PlutoSDR_Source 
 
 ### 1.3. Install specific libraries for Pluto 
 * https://wiki.analog.com/resources/tools-software/linux-software/gnuradio_windows:
 #### 1.3.1. Install lib-iio here: https://github.com/analogdevicesinc/libiio 
 #### 1.3.2 Install libad9361-iio here: https://github.com/analogdevicesinc/libad9361-iio
   
-*  *Note, process may not be stable with GNUradio v3.8
+-  *Note, process may not be stable with GNUradio v3.8
 ## 2. Use the GNUradio NBFM transceiver flowgraph on this page
 ![GNUradio flowgraph for a NBFM transceiver](https://github.com/SSkySurfer/SDR_Learning/blob/main/NBFM_transceiver_Pluto_grc.png)
 - <em align="center"> GNUradio flowgraph for a NBFM transceive </em>
