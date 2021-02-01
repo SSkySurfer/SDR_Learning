@@ -11,7 +11,7 @@
   
   *Note, process may not be stable with GNUradio v3.8
 ## 2. Use the GNUradio NBFM transceiver flowgraph on this page
-![plot](https://github.com/SSkySurfer/SDRLearning/NBFM_gui.png?raw=true)
+![plot](https://github.com/SSkySurfer/SDR_Learning/blob/main/NBFM_gui.png)
 ### 2.1. Download the grc flowgraph named "NBFM_transceiver_Pluto.grc"
 ### 2.2. Link the wav file to the flowgraph. Modify the file source to the wav file.
 #### 2.2.1. Download a test *.wav file on this repo.
