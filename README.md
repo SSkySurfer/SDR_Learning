@@ -36,16 +36,17 @@
 #### 1.3.2 Install libad9361-iio here: https://github.com/analogdevicesinc/libad9361-iio
   
 -  *Note, process may not be stable with GNUradio v3.8
-## 2. Use the GNUradio NBFM transceiver flowgraph on this page
+## 2. Use the GNUradio NBFM transceiver flowgraphs
+* Download the NBFM_transceiver_Pluto.grc under /GNU3_7/ or /GNU3_8/ depending on your version.
 ![GNUradio flowgraph for a NBFM transceiver](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/NBFM_transceiver_Pluto_grc.png)
-- <em align="center"> GNUradio flowgraph for a NBFM transceive </em>
+- <em align="center"> GNUradio flowgraph for a NBFM transceiver </em>
 ![GUI to modify parameters in the transceiver flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/NBFM_gui.png)
 - <em align="center">GUI to modify parameters in the transceiver flowgraph</em>
 
 ### 2.1. Download the grc flowgraph 
 #### 2.1.1. Download file named "NBFM_transceiver_Pluto.grc"
 ### 2.2. Link the wav file to the flowgraph. Modify the file source to the wav file.
-#### 2.2.1. Download a test *.wav file on this repo.
+#### 2.2.1. Download a test *.wav file on this repo under /exampleAudio
 #### 2.2.2. Alternatively, use your own *wav. 
 ### 2.3. If using the voice transmit feature of the flowgraph
 #### 2.3.1. Link your computer's microphone to the flowgraph, by modifying the "Audio Source" block, and changing the "Device_Name". First, find to your computer's microphone name (e.g. Internal Microphone (Realtek Device)).
