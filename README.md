@@ -35,7 +35,11 @@
 #### 1.3.1. Install lib-iio here: https://github.com/analogdevicesinc/libiio 
 #### 1.3.2 Install libad9361-iio here: https://github.com/analogdevicesinc/libad9361-iio
   
--  *Note, process may not be stable with GNUradio v3.8
+## GNUradio v3.8  
+### NOTE: GNUradio v3.8 requires a new toolbox (gr-iio) and works best in Ubuntu. 
+- 1. In order to use the GNUradio 3.8 software, utilize the virtual machine here: : https://github.com/bastibl/instant-gnuradio
+- 2. Install PlutoSDR dependencies for GNUradio (gr-iio toolbox https://github.com/analogdevicesinc/gr-iio/tree/upgrade-3.8)
+
 ## 2. Use the GNUradio NBFM transceiver flowgraphs
 * Download the NBFM_transceiver_Pluto.grc under /GNU3_7/ or /GNU3_8/ depending on your version.
 ![GNUradio flowgraph for a NBFM transceiver](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/NBFM_transceiver_Pluto_grc.png)
