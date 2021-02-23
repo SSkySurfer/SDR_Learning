@@ -63,7 +63,7 @@
       txgain =-10;
 '''
 
-* This sets up the example and allows the user to see different combinations of modulations, frequencies, and gains to transmit an image.
+* This sets up the example and allows the user to see different combinations of modulations, frequencies, and gains to transmit an image. One will observe that as the modulation complexity increases (16 or 64QAM), more power and/or bandwidth is required to send the waveform.
 
 ![Baseband](https://github.com/SSkySurfer/SDR_Learning/blob/main/matlab/images/BAseband_WLAN_signal.png)
 
