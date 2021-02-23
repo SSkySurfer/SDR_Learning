@@ -60,9 +60,14 @@
       % 7 = '3/4 64QAM'
 
       Modulation = 3;
+      txgain =-10;
 '''
 
-This sets up the example.
+* This sets up the example and allows the user to see different combinations of modulations, frequencies, and gains to transmit an image.
+![Baseband](/SDR_Learning/matlab/images/Baseband_WLAN_signal.png)
+![Constel](/SDR_Learning/matlab/images/WLAN_constellation.png)
+![imagesent](/SDR_Learning/matlab/images/WLAN_image_sent_received.png)
+
 ## Dependencies
 * Matla R2019b+
 * Commmunications Toolbox https://www.mathworks.com/hardware-support/adalm-pluto-radio.html 
