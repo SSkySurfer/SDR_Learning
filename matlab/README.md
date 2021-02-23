@@ -64,7 +64,7 @@
 '''
 
 * This sets up the example and allows the user to see different combinations of modulations, frequencies, and gains to transmit an image.
-![Baseband](https://github.com/SSkySurfer/SDR_Learning/matlab/images/Baseband_WLAN_signal)
+![Baseband](https://github.com/SSkySurfer/SDR_Learning/matlab/images/BAseband_WLAN_signal.png)
 ![Constel](https://github.com/SSkySurfer/SDR_Learning/matlab/images/WLAN_constellation.png)
 ![imagesent](https://github.com/SSkySurfer/SDR_Learning/matlab/images/WLAN_image_sent_received.png)
 
