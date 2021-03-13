@@ -94,8 +94,8 @@ blocks:
     rangeType: float
     start: '88000000'
     step: '25000'
-    stop: '174000000'
-    value: '141050000'
+    stop: '470000000'
+    value: '446578300'
     widget: counter_slider
   states:
     bus_sink: false
@@ -137,7 +137,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '50'
-    value: '10'
+    value: '40'
     widget: counter_slider
   states:
     bus_sink: false
@@ -200,7 +200,7 @@ blocks:
     start: '520833 '
     step: '100000'
     stop: '61440000'
-    value: samp_rate*12
+    value: '1000000'
     widget: counter_slider
   states:
     bus_sink: false
@@ -221,7 +221,7 @@ blocks:
     start: '-110'
     step: '1'
     stop: '-50'
-    value: '-60'
+    value: '-80'
     widget: counter_slider
   states:
     bus_sink: false
@@ -258,7 +258,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '90'
-    value: '15'
+    value: '1'
     widget: counter_slider
   states:
     bus_sink: false
@@ -283,9 +283,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 196]
+    coordinate: [22, 196]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: analog_nbfm_rx_0
   id: analog_nbfm_rx
   parameters:
@@ -322,9 +322,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [619, 180]
+    coordinate: [622, 188]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: analog_sig_source_x_0_0
   id: analog_sig_source_x
   parameters:
@@ -368,7 +368,7 @@ blocks:
     bus_structure: null
     coordinate: [336, 324]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: analog_simple_squelch_cc_0
   id: analog_simple_squelch_cc
   parameters:
@@ -454,9 +454,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [484, 199]
+    coordinate: [478, 198]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_wavfile_sink_0
   id: blocks_wavfile_sink
   parameters:
@@ -492,6 +492,25 @@ blocks:
     coordinate: [25, 267]
     rotation: 0
     state: disabled
+- name: fosphor_qt_sink_c_0
+  id: fosphor_qt_sink_c
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    freq_center: rx_freq
+    freq_span: samp_rate
+    gui_hint: '[4,0,6,3]'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 501]
+    rotation: 0
+    state: true
 - name: iio_pluto_sink_0
   id: iio_pluto_sink
   parameters:
@@ -506,14 +525,14 @@ blocks:
     filter: ''
     frequency: tx_freq
     samplerate: sdr_samp_rate
-    uri: ''
+    uri: usb:1.58.5
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [1025, 306]
     rotation: 0
-    state: true
+    state: disabled
 - name: iio_pluto_source_0
   id: iio_pluto_source
   parameters:
@@ -522,11 +541,11 @@ blocks:
     auto_filter: 'True'
     bandwidth: '200000'
     bbdc: 'True'
-    buffer_size: '0x4000'
+    buffer_size: '75000'
     comment: ''
     filter: ''
     frequency: rx_freq
-    gain1: '''manual'''
+    gain1: '''hybrid'''
     manual_gain1: rx_gain*(-rx_tx+1)
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -538,7 +557,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [23, 338]
+    coordinate: [19, 337]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -564,7 +583,7 @@ blocks:
     bus_structure: null
     coordinate: [568, 324]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: low_pass_filter_0_0
   id: low_pass_filter
   parameters:
@@ -572,21 +591,21 @@ blocks:
     alias: ''
     beta: '6.76'
     comment: ''
-    cutoff_freq: 10e3
+    cutoff_freq: 100e3
     decim: '1'
     gain: '1'
     interp: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
-    samp_rate: samp_rate
+    samp_rate: sdr_samp_rate
     type: fir_filter_ccf
-    width: 2e3
+    width: 48e3
     win: firdes.WIN_HAMMING
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [216, 708]
+    coordinate: [20, 716]
     rotation: 0
     state: enabled
 - name: low_pass_filter_1
@@ -612,7 +631,7 @@ blocks:
     bus_structure: null
     coordinate: [239, 148]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_sink_x_0
   id: qtgui_sink_x
   parameters:
@@ -627,7 +646,7 @@ blocks:
     minoutbuf: '0'
     name: '""'
     plotconst: 'True'
-    plotfreq: 'True'
+    plotfreq: 'False'
     plottime: 'False'
     plotwaterfall: 'True'
     rate: '10'
@@ -639,9 +658,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 556]
+    coordinate: [851, 565]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: rational_resampler_xxx_0
   id: rational_resampler_xxx
   parameters:
@@ -661,7 +680,7 @@ blocks:
     bus_structure: null
     coordinate: [768, 348]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: rational_resampler_xxx_0_0
   id: rational_resampler_xxx
   parameters:
@@ -679,7 +698,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [48, 732]
+    coordinate: [202, 736]
     rotation: 0
     state: enabled
 - name: rational_resampler_xxx_0_1
@@ -699,7 +718,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 556]
+    coordinate: [593, 553]
     rotation: 0
     state: enabled
 
@@ -712,16 +731,17 @@ connections:
 - [analog_simple_squelch_cc_0, '0', analog_nbfm_rx_0, '0']
 - [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_wavfile_sink_0, '0']
-- [blocks_multiply_xx_0, '0', rational_resampler_xxx_0_0, '0']
+- [blocks_multiply_xx_0, '0', low_pass_filter_0_0, '0']
 - [blocks_multiply_xx_0, '0', rational_resampler_xxx_0_1, '0']
 - [blocks_multiply_xx_1, '0', analog_nbfm_tx_0, '0']
 - [blocks_wavfile_source_0, '0', blocks_multiply_xx_1, '0']
 - [iio_pluto_source_0, '0', blocks_multiply_xx_0, '0']
 - [low_pass_filter_0, '0', rational_resampler_xxx_0, '0']
-- [low_pass_filter_0_0, '0', analog_simple_squelch_cc_0, '0']
+- [low_pass_filter_0_0, '0', rational_resampler_xxx_0_0, '0']
 - [low_pass_filter_1, '0', blocks_multiply_xx_1, '0']
 - [rational_resampler_xxx_0, '0', iio_pluto_sink_0, '0']
-- [rational_resampler_xxx_0_0, '0', low_pass_filter_0_0, '0']
+- [rational_resampler_xxx_0_0, '0', analog_simple_squelch_cc_0, '0']
+- [rational_resampler_xxx_0_1, '0', fosphor_qt_sink_c_0, '0']
 - [rational_resampler_xxx_0_1, '0', qtgui_sink_x_0, '0']
 
 metadata:
