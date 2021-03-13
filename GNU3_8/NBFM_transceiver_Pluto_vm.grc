@@ -59,7 +59,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 8]
+    coordinate: [759, 8]
     rotation: 0
     state: enabled
 - name: rx_aud
@@ -136,8 +136,8 @@ blocks:
     rangeType: float
     start: '0'
     step: '1'
-    stop: '50'
-    value: '40'
+    stop: '74'
+    value: '55'
     widget: counter_slider
   states:
     bus_sink: false
@@ -168,14 +168,31 @@ blocks:
     orient: Qt.QHBoxLayout
     type: int
     value: '0'
-    widget: radio_buttons
+    widget: combo_box
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [872, 84]
+    coordinate: [871, 84]
     rotation: 0
-    state: enabled
+    state: disabled
+- name: rx_tx
+  id: variable_qtgui_push_button
+  parameters:
+    comment: PTT Switch
+    gui_hint: '[0,0,1,1]'
+    label: PTT
+    pressed: '1'
+    released: '0'
+    type: bool
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1128, 9]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -185,7 +202,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 124]
+    coordinate: [7, 124]
     rotation: 0
     state: enabled
 - name: sdr_samp_rate
@@ -206,7 +223,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1008, 132]
+    coordinate: [1007, 132]
     rotation: 0
     state: enabled
 - name: sqch
@@ -220,8 +237,8 @@ blocks:
     rangeType: float
     start: '-110'
     step: '1'
-    stop: '-50'
-    value: '-80'
+    stop: '-30'
+    value: '-42'
     widget: counter_slider
   states:
     bus_sink: false
@@ -283,7 +300,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [22, 196]
+    coordinate: [23, 196]
     rotation: 0
     state: disabled
 - name: analog_nbfm_rx_0
@@ -322,9 +339,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [622, 188]
+    coordinate: [621, 188]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: analog_sig_source_x_0_0
   id: analog_sig_source_x
   parameters:
@@ -366,9 +383,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 324]
+    coordinate: [335, 324]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: analog_simple_squelch_cc_0
   id: analog_simple_squelch_cc
   parameters:
@@ -454,9 +471,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [478, 198]
+    coordinate: [477, 198]
     rotation: 0
-    state: disabled
+    state: enabled
+- name: blocks_mute_xx_0
+  id: blocks_mute_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mute: not rx_tx
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [926, 268]
+    rotation: 0
+    state: true
 - name: blocks_wavfile_sink_0
   id: blocks_wavfile_sink
   parameters:
@@ -480,7 +514,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: Saved File
-    file: /home/gnuradio/Documents/bingo.wav
+    file: /home/gnuradio/Documents/Example_Audio/exampleAudio_caution.wav
     maxoutbuf: '0'
     minoutbuf: '0'
     nchan: '1'
@@ -489,9 +523,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [25, 267]
+    coordinate: [25, 254]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: fosphor_qt_sink_c_0
   id: fosphor_qt_sink_c
   parameters:
@@ -525,14 +559,14 @@ blocks:
     filter: ''
     frequency: tx_freq
     samplerate: sdr_samp_rate
-    uri: usb:1.58.5
+    uri: ''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1025, 306]
+    coordinate: [1046, 306]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: iio_pluto_source_0
   id: iio_pluto_source
   parameters:
@@ -545,7 +579,7 @@ blocks:
     comment: ''
     filter: ''
     frequency: rx_freq
-    gain1: '''hybrid'''
+    gain1: '''slow_attack'''
     manual_gain1: rx_gain*(-rx_tx+1)
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -557,7 +591,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [19, 337]
+    coordinate: [18, 337]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -583,7 +617,7 @@ blocks:
     bus_structure: null
     coordinate: [568, 324]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: low_pass_filter_0_0
   id: low_pass_filter
   parameters:
@@ -629,7 +663,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [239, 148]
+    coordinate: [212, 146]
     rotation: 0
     state: disabled
 - name: qtgui_sink_x_0
@@ -678,9 +712,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 348]
+    coordinate: [769, 344]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: rational_resampler_xxx_0_0
   id: rational_resampler_xxx
   parameters:
@@ -734,12 +768,13 @@ connections:
 - [blocks_multiply_xx_0, '0', low_pass_filter_0_0, '0']
 - [blocks_multiply_xx_0, '0', rational_resampler_xxx_0_1, '0']
 - [blocks_multiply_xx_1, '0', analog_nbfm_tx_0, '0']
+- [blocks_mute_xx_0, '0', iio_pluto_sink_0, '0']
 - [blocks_wavfile_source_0, '0', blocks_multiply_xx_1, '0']
 - [iio_pluto_source_0, '0', blocks_multiply_xx_0, '0']
 - [low_pass_filter_0, '0', rational_resampler_xxx_0, '0']
 - [low_pass_filter_0_0, '0', rational_resampler_xxx_0_0, '0']
 - [low_pass_filter_1, '0', blocks_multiply_xx_1, '0']
-- [rational_resampler_xxx_0, '0', iio_pluto_sink_0, '0']
+- [rational_resampler_xxx_0, '0', blocks_mute_xx_0, '0']
 - [rational_resampler_xxx_0_0, '0', analog_simple_squelch_cc_0, '0']
 - [rational_resampler_xxx_0_1, '0', fosphor_qt_sink_c_0, '0']
 - [rational_resampler_xxx_0_1, '0', qtgui_sink_x_0, '0']
