@@ -44,7 +44,7 @@
 * Download the NBFM_transceiver_Pluto.grc under /GNU3_7/ or /GNU3_8/ depending on your version.
 ![GNUradio flowgraph for a NBFM transceiver](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/NBFM_transceiver_Pluto_grc.png)
 - <em align="center"> GNUradio flowgraph for a NBFM transceiver </em>
-![GUI to modify parameters in the transceiver flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/NBFM_gui.png)
+![GUI to modify parameters in the transceiver flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/PTT_rev1.png)
 - <em align="center">GUI to modify parameters in the transceiver flowgraph</em>
 
 ### 2.1. Download the grc flowgraph 
