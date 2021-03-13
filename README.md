@@ -76,7 +76,7 @@
 
 ## 3. Use the GNUradio NBFM transceiver flowgraphs
 * Download the pulse_radar.grc under /GNU3_8/ (can be easily modified for GNU 3.7)
-![GNUradio flowgraph for a Pulsed Radar](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/pulse_radar.svg)
+![GNUradio flowgraph for a Pulsed Radar](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/pulse_radar_grc.png)
 - <em align="center"> GNUradio flowgraph for a NBFM transceiver </em>
 ![GUI to modify parameters in the radar tx/rx flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/pulse_radar_lowPRF.png)
 - <em align="center">GUI to modify parameters in the transceiver flowgraph, using a low duty cycle(PRF) /em>
