@@ -1,0 +1,850 @@
+options:
+  parameters:
+    author: SRS, 2020
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: Pluto SDR FM transceiver
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: NBFM_transceiver
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: NBFM_transceiver
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: audio_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [94, 126]
+    rotation: 0
+    state: enabled
+- name: fsk_deviation
+  id: variable
+  parameters:
+    comment: ''
+    value: '10000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [352, 128]
+    rotation: 0
+    state: enabled
+- name: offset
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: '[0,2,1,1]'
+    label: rx_tx_offset
+    label0: 5Mhz
+    label1: 600kHz
+    label2: ''
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '2'
+    option0: '5000000'
+    option1: '600000'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: real
+    value: '5000000'
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [759, 8]
+    rotation: 0
+    state: enabled
+- name: rx_aud
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[2,1,1,1]'
+    label: rx_audio_gain
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.05'
+    stop: '0.5'
+    value: '0.300'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [528, 4]
+    rotation: 0
+    state: enabled
+- name: rx_freq
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[1,0,1,2]'
+    label: rx_freq
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '88000000'
+    step: '25000'
+    stop: '470000000'
+    value: '446578300'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [168, 4]
+    rotation: 0
+    state: enabled
+- name: rx_freq_fine
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[3,1,1,1]'
+    label: rx_freq_fine
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '-10000'
+    step: '100'
+    stop: '10000'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 4]
+    rotation: 0
+    state: enabled
+- name: rx_gain
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[2,0,1,1]'
+    label: rx_gain
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '74'
+    value: '55'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 4]
+    rotation: 0
+    state: enabled
+- name: rx_tx
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: '[0,0,1,1]'
+    label: rx_tx_pushbutton
+    label0: RX
+    label1: TX
+    label2: ''
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '2'
+    option0: '0'
+    option1: '1'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QHBoxLayout
+    type: int
+    value: '0'
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [871, 84]
+    rotation: 0
+    state: disabled
+- name: rx_tx
+  id: variable_qtgui_push_button
+  parameters:
+    comment: PTT Switch
+    gui_hint: '[0,0,1,1]'
+    label: PTT
+    pressed: '1'
+    released: '0'
+    type: bool
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1128, 9]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [7, 126]
+    rotation: 0
+    state: enabled
+- name: sdr_samp_rate
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[0,1,1,1]'
+    label: sdr_sample_rate
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '520833 '
+    step: '100000'
+    stop: '61440000'
+    value: '1000000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1007, 132]
+    rotation: 0
+    state: enabled
+- name: sqch
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[3,0,1,1]'
+    label: rx_sqlch
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '-110'
+    step: '1'
+    stop: '-30'
+    value: '-42'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 4]
+    rotation: 0
+    state: enabled
+- name: tx_freq
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: '[1,2,1,1]'
+    label: tx_freq
+    type: real
+    value: rx_freq-offset
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [872, 4]
+    rotation: 0
+    state: enabled
+- name: tx_gain
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[2,2,1,1]'
+    label: tx_gain
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '90'
+    value: '1'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1008, 4]
+    rotation: 0
+    state: enabled
+- name: Internal_Microphone
+  id: audio_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Microphone
+    device_name: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_outputs: '1'
+    ok_to_block: 'True'
+    samp_rate: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [23, 196]
+    rotation: 0
+    state: disabled
+- name: analog_nbfm_rx_0
+  id: analog_nbfm_rx
+  parameters:
+    affinity: ''
+    alias: ''
+    audio_rate: '48000'
+    comment: ''
+    max_dev: 12.5e3
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    quad_rate: '48000'
+    tau: 50e-6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [602, 690]
+    rotation: 0
+    state: enabled
+- name: analog_nbfm_tx_0
+  id: analog_nbfm_tx
+  parameters:
+    affinity: ''
+    alias: ''
+    audio_rate: audio_rate
+    comment: ''
+    fh: '-1.0'
+    max_dev: 5e3
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    quad_rate: audio_rate
+    tau: 75e-6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [621, 188]
+    rotation: 0
+    state: enabled
+- name: analog_quadrature_demod_cf_0
+  id: analog_quadrature_demod_cf
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    gain: (2*math.pi*fsk_deviation/audio_rate)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [489, 865]
+    rotation: 0
+    state: disabled
+- name: analog_sig_source_x_0_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: sdr_samp_rate
+    type: complex
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [40, 572]
+    rotation: 0
+    state: enabled
+- name: analog_sig_source_x_0_0_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: CTCSS tone when Freq not = 0
+    freq: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: audio_rate
+    type: float
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [335, 324]
+    rotation: 0
+    state: enabled
+- name: analog_simple_squelch_cc_0
+  id: analog_simple_squelch_cc
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    threshold: sqch
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [385, 753]
+    rotation: 0
+    state: enabled
+- name: audio_sink_0
+  id: audio_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    device_name: ''
+    num_inputs: '1'
+    ok_to_block: 'True'
+    samp_rate: '48000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1086, 741]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: rx_aud*(-(rx_tx)+1)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [862, 757]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 568]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_1
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [477, 198]
+    rotation: 0
+    state: enabled
+- name: blocks_mute_xx_0
+  id: blocks_mute_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mute: not rx_tx
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [926, 268]
+    rotation: 0
+    state: true
+- name: blocks_wavfile_sink_0
+  id: blocks_wavfile_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bits_per_sample: '16'
+    comment: ''
+    file: C:\Users\rswee\OneDrive\Documents\SCHOOL\ECE531\NBFM_rx_test.wav
+    nchan: '1'
+    samp_rate: samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1086, 805]
+    rotation: 0
+    state: disabled
+- name: blocks_wavfile_source_0
+  id: blocks_wavfile_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Saved File
+    file: /home/gnuradio/Documents/Example_Audio/exampleAudio_caution.wav
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    repeat: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [25, 254]
+    rotation: 0
+    state: enabled
+- name: fosphor_qt_sink_c_0
+  id: fosphor_qt_sink_c
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    freq_center: rx_freq
+    freq_span: sdr_samp_rate
+    gui_hint: '[4,0,6,3]'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 501]
+    rotation: 0
+    state: true
+- name: iio_pluto_sink_0
+  id: iio_pluto_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    attenuation1: -tx_gain*(rx_tx)
+    auto_filter: 'True'
+    bandwidth: '200000'
+    buffer_size: '0x4000'
+    comment: ''
+    cyclic: 'False'
+    filter: ''
+    frequency: tx_freq
+    samplerate: sdr_samp_rate
+    uri: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1046, 306]
+    rotation: 0
+    state: enabled
+- name: iio_pluto_source_0
+  id: iio_pluto_source
+  parameters:
+    affinity: ''
+    alias: ''
+    auto_filter: 'True'
+    bandwidth: '200000'
+    bbdc: 'True'
+    buffer_size: '75000'
+    comment: ''
+    filter: ''
+    frequency: rx_freq
+    gain1: '''slow_attack'''
+    manual_gain1: rx_gain*(-rx_tx+1)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    quadrature: 'True'
+    rfdc: 'True'
+    samplerate: sdr_samp_rate
+    uri: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [18, 337]
+    rotation: 0
+    state: true
+- name: low_pass_filter_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '16000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: audio_rate
+    type: fir_filter_ccf
+    width: '200'
+    win: firdes.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [568, 324]
+    rotation: 0
+    state: enabled
+- name: low_pass_filter_0_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: 100e3
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: sdr_samp_rate
+    type: fir_filter_ccf
+    width: 48e3
+    win: firdes.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [21, 716]
+    rotation: 0
+    state: enabled
+- name: low_pass_filter_1
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '20000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_fff
+    width: '500'
+    win: firdes.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [212, 146]
+    rotation: 0
+    state: disabled
+- name: low_pass_filter_2
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '8000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: audio_rate
+    type: fir_filter_fff
+    width: '1000'
+    win: firdes.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [701, 817]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: '25000'
+    comment: ''
+    fc: rx_freq
+    fftsize: '256'
+    gui_hint: '[4,0,6,3]'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'True'
+    plotfreq: 'False'
+    plottime: 'False'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'True'
+    showrf: 'True'
+    type: complex
+    wintype: firdes.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [851, 565]
+    rotation: 0
+    state: disabled
+- name: rational_resampler_xxx_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Increases Sample Rate
+    decim: audio_rate
+    fbw: '0'
+    interp: sdr_samp_rate
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: ''
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [769, 344]
+    rotation: 0
+    state: enabled
+- name: rational_resampler_xxx_0_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: sdr_samp_rate
+    fbw: '0'
+    interp: audio_rate
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: ''
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [202, 736]
+    rotation: 0
+    state: enabled
+- name: rational_resampler_xxx_0_1
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decim: sdr_samp_rate
+    fbw: '0'
+    interp: audio_rate
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: ''
+    type: ccf
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [593, 553]
+    rotation: 0
+    state: enabled
+
+connections:
+- [Internal_Microphone, '0', low_pass_filter_1, '0']
+- [analog_nbfm_rx_0, '0', blocks_multiply_const_vxx_0, '0']
+- [analog_nbfm_tx_0, '0', low_pass_filter_0, '0']
+- [analog_quadrature_demod_cf_0, '0', low_pass_filter_2, '0']
+- [analog_sig_source_x_0_0, '0', blocks_multiply_xx_0, '1']
+- [analog_sig_source_x_0_0_0, '0', blocks_multiply_xx_1, '1']
+- [analog_simple_squelch_cc_0, '0', analog_nbfm_rx_0, '0']
+- [analog_simple_squelch_cc_0, '0', analog_quadrature_demod_cf_0, '0']
+- [blocks_multiply_const_vxx_0, '0', audio_sink_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_wavfile_sink_0, '0']
+- [blocks_multiply_xx_0, '0', low_pass_filter_0_0, '0']
+- [blocks_multiply_xx_0, '0', rational_resampler_xxx_0_1, '0']
+- [blocks_multiply_xx_1, '0', analog_nbfm_tx_0, '0']
+- [blocks_mute_xx_0, '0', iio_pluto_sink_0, '0']
+- [blocks_wavfile_source_0, '0', blocks_multiply_xx_1, '0']
+- [iio_pluto_source_0, '0', blocks_multiply_xx_0, '0']
+- [low_pass_filter_0, '0', rational_resampler_xxx_0, '0']
+- [low_pass_filter_0_0, '0', rational_resampler_xxx_0_0, '0']
+- [low_pass_filter_1, '0', blocks_multiply_xx_1, '0']
+- [low_pass_filter_2, '0', blocks_multiply_const_vxx_0, '0']
+- [rational_resampler_xxx_0, '0', blocks_mute_xx_0, '0']
+- [rational_resampler_xxx_0_0, '0', analog_simple_squelch_cc_0, '0']
+- [rational_resampler_xxx_0_1, '0', fosphor_qt_sink_c_0, '0']
+- [rational_resampler_xxx_0_1, '0', qtgui_sink_x_0, '0']
+
+metadata:
+  file_format: 1
