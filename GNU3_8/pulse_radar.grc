@@ -264,9 +264,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [977, 299]
+    coordinate: [973, 301]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: iio_pluto_sink_0
   id: iio_pluto_sink
   parameters:
@@ -410,9 +410,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [986, 186]
+    coordinate: [977, 186]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: radar_signal_generator_fmcw_c_0
   id: radar_signal_generator_fmcw_c
   parameters:
