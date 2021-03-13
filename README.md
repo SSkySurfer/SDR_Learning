@@ -82,16 +82,18 @@
 - <em align="center">GUI to modify parameters in the transceiver flowgraph, using a low duty cycle(PRF) /em>
 ![GUI to modify parameters in the radar tx/rx flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/pulse_radar_highPRF.png)
 - <em align="center">GUI to modify parameters in the transceiver flowgraph, using a high duty cycle(PRF)</em>
-## 3. Resources for Pluto SDRs
-* Paper on Pluto Architechture and GNUradio examples: https://peer.asee.org/incorporating-plutosdr-in-the-communication-laboratory-and-classroom-potential-or-pitfall.pdf 
-* Official Analog Devices PLUTO SDR links here: https://wiki.analog.com/university/tools/pluto/users 
 
-## 3. Use the GNUradio PTT Tone Generator flowgraphs
+
+## 4. Use the GNUradio PTT Tone Generator flowgraphs
 * Download the PTT_Tone_gen.grc under /GNU3_8/ (can be easily modified for GNU 3.7)
 ![GNUradio flowgraph for a PTT Tone Generator](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/PTT_tone_gen.png)
 * Play a tune/tone on a PTT using the slider bar to change the modulation frequency.
- 
-## 5. Lessons and tutorials for SDR lessons
+
+## 5. Resources for Pluto SDRs
+* Paper on Pluto Architechture and GNUradio examples: https://peer.asee.org/incorporating-plutosdr-in-the-communication-laboratory-and-classroom-potential-or-pitfall.pdf 
+* Official Analog Devices PLUTO SDR links here: https://wiki.analog.com/university/tools/pluto/users 
+* 
+## 6. Lessons and tutorials for SDR lessons
 * Get started with Python here: https://jupyter.org/
 
 * Learn about IQ data: < https://www.ni.com/en-us/innovations/videos/07/i-q-data--plain-and-simple.html#:~:text=I%2FQ%20signals%2C%20or%20I,signals%20in%20the%20time-domain.&text=You%20want%20to%20understand%20more,QAM)%2C%20or%20RF%20upconverters > 
