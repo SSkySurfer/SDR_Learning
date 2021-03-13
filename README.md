@@ -73,6 +73,15 @@
 #### 2.9.2. Start the flowgraph and talk into the mic. Listen to the voice on your handheld radio (or another SDR)
 ### 2.10. Modify the slider bars as required for other transmitters.
 
+
+## 3. Use the GNUradio NBFM transceiver flowgraphs
+* Download the pulse_radar.grc under /GNU3_8/ (can be easily modified for GNU 3.7)
+![GNUradio flowgraph for a Pulsed Radar](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/pulse_radar.svg)
+- <em align="center"> GNUradio flowgraph for a NBFM transceiver </em>
+![GUI to modify parameters in the radar tx/rx flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/pulse_radar_lowPRF.png)
+- <em align="center">GUI to modify parameters in the transceiver flowgraph, using a low duty cycle(PRF) /em>
+![GUI to modify parameters in the radar tx/rx flowgraph](https://github.com/SSkySurfer/SDR_Learning/blob/main/images/pulse_radar_highPRF.png)
+- <em align="center">GUI to modify parameters in the transceiver flowgraph, using a high duty cycle(PRF)</em>
 ## 3. Resources for Pluto SDRs
 * Paper on Pluto Architechture and GNUradio examples: https://peer.asee.org/incorporating-plutosdr-in-the-communication-laboratory-and-classroom-potential-or-pitfall.pdf 
 * Official Analog Devices PLUTO SDR links here: https://wiki.analog.com/university/tools/pluto/users 
