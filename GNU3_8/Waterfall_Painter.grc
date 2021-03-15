@@ -1,0 +1,162 @@
+options:
+  parameters:
+    author: srs
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: srs 2021
+    description: Paints pictures on waterfall of rx
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: Paint_spectrum
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Waterfall_Painter
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: fosphor_qt_sink_c_0
+  id: fosphor_qt_sink_c
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    freq_center: '0'
+    freq_span: samp_rate
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1016, 213]
+    rotation: 0
+    state: true
+- name: iio_pluto_sink_0
+  id: iio_pluto_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    attenuation1: '10.0'
+    auto_filter: 'True'
+    bandwidth: '20000000'
+    buffer_size: '32768'
+    comment: ''
+    cyclic: 'False'
+    filter: ''
+    frequency: '2400000000'
+    samplerate: '2084000'
+    uri: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [551, 165]
+    rotation: 0
+    state: true
+- name: iio_pluto_source_0
+  id: iio_pluto_source
+  parameters:
+    affinity: ''
+    alias: ''
+    auto_filter: 'True'
+    bandwidth: '20000000'
+    bbdc: 'True'
+    buffer_size: '32768'
+    comment: ''
+    filter: ''
+    frequency: '2400000000'
+    gain1: '''manual'''
+    manual_gain1: '30'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    quadrature: 'True'
+    rfdc: 'True'
+    samplerate: '2084000'
+    uri: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [740, 133]
+    rotation: 0
+    state: true
+- name: paint_image_source_0
+  id: paint_image_source
+  parameters:
+    affinity: ''
+    alias: ''
+    autocontrast: '0'
+    bt709_map: '1'
+    comment: ''
+    image_file: /home/gnuradio/Pictures/f16_schem_01.gif
+    image_flip: '1'
+    image_invert: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeatmode: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [88, 189]
+    rotation: 0
+    state: true
+- name: paint_paint_bc_0
+  id: paint_paint_bc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    equalization: EQUALIZATION_OFF
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    randomsrc: INTERNAL
+    repeats: '2'
+    width: '346'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [323, 213]
+    rotation: 0
+    state: true
+
+connections:
+- [iio_pluto_source_0, '0', fosphor_qt_sink_c_0, '0']
+- [paint_image_source_0, '0', paint_paint_bc_0, '0']
+- [paint_paint_bc_0, '0', iio_pluto_sink_0, '0']
+
+metadata:
+  file_format: 1

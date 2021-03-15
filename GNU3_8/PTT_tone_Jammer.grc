@@ -1,16 +1,16 @@
 options:
   parameters:
-    author: ''
+    author: srs
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
-    copyright: ''
-    description: ''
+    copyright: srs 2021
+    description: NBFM PTT Tone JAmmer
     gen_cmake: 'On'
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: pulse_radar
+    id: PTT_Tone_Jammer
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,7 +21,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: ''
+    title: PTT Tone maker
     window_size: ''
   states:
     bus_sink: false
@@ -32,6 +32,27 @@ options:
     state: enabled
 
 blocks:
+- name: duty_cycle
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[0,1,1,1]'
+    label: Duty Cycle (%)
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '100'
+    value: '100'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [474, 3]
+    rotation: 0
+    state: true
 - name: freq
   id: variable
   parameters:
@@ -44,25 +65,58 @@ blocks:
     coordinate: [8, 100]
     rotation: 0
     state: enabled
-- name: percent_tracks
+- name: num_tones
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: '[0,1,1,1]'
-    label: ''
-    min_len: '200'
+    gui_hint: '[1,2,1,1]'
+    label: Number of Tones
+    min_len: '100'
     orient: Qt.Horizontal
-    rangeType: float
-    start: '0'
+    rangeType: int
+    start: '1'
     step: '1'
     stop: '100'
-    value: '50'
+    value: '1'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [474, 3]
+    coordinate: [1058, 8]
+    rotation: 0
+    state: true
+- name: pri
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[0, 0, 1, 1]'
+    label: PRI (sec)
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: 2e-6
+    step: '0.5e-6'
+    stop: '1'
+    value: '1'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [254, 4]
+    rotation: 0
+    state: true
+- name: pri_tau
+  id: variable
+  parameters:
+    comment: ''
+    value: round(pri/(1/samp_rate))
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [608, 6]
     rotation: 0
     state: true
 - name: pulse_freq
@@ -70,34 +124,100 @@ blocks:
   parameters:
     comment: ''
     gui_hint: '[1,0,1,1]'
-    label: Pulse Freq
+    label: Pulse Freq (Hz)
     min_len: '200'
     orient: Qt.Horizontal
     rangeType: float
     start: '10'
     step: '100'
-    stop: 10e3
-    value: '200'
+    stop: 20e3
+    value: '410'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [198, 131]
+    coordinate: [193, 132]
+    rotation: 0
+    state: true
+- name: pulse_spacing
+  id: variable
+  parameters:
+    comment: ''
+    value: round((pri/pw)*((100-duty_cycle)/100)*(pw_tau))
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [801, 7]
     rotation: 0
     state: true
 - name: pulse_vector
   id: variable
   parameters:
     comment: ''
-    value: '[1]*tgt_pw_tau+[0]*(track_spacing)'
+    value: '[1]*pw_tau+[0]*(pulse_spacing)'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [35, 719]
+    coordinate: [14, 498]
     rotation: 0
     state: enabled
+- name: pw
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[1 , 1, 1, 1]'
+    label: PW (sec)
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: 1e-6
+    step: '0.5e-6'
+    stop: '1'
+    value: '1'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [364, 2]
+    rotation: 0
+    state: true
+- name: pw_tau
+  id: variable
+  parameters:
+    comment: ''
+    value: round(pw/(1/samp_rate))
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [706, 6]
+    rotation: 0
+    state: true
+- name: radio_freq
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[0, 2,1, 1]'
+    label: Radio Freq
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: int
+    start: '60000000'
+    step: '1000000'
+    stop: '6000000000'
+    value: '136050000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [914, 7]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -110,84 +230,6 @@ blocks:
     coordinate: [8, 160]
     rotation: 0
     state: enabled
-- name: tgt_pri
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: '[0, 0, 1, 1]'
-    label: target radar PRI
-    min_len: '200'
-    orient: Qt.Horizontal
-    rangeType: float
-    start: 2e-6
-    step: '0.5e-6'
-    stop: '1'
-    value: 10e-2
-    widget: counter_slider
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [197, 6]
-    rotation: 0
-    state: true
-- name: tgt_pri_tau
-  id: variable
-  parameters:
-    comment: ''
-    value: round(tgt_pri/(1/samp_rate))
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [608, 6]
-    rotation: 0
-    state: true
-- name: tgt_pw
-  id: variable_qtgui_range
-  parameters:
-    comment: ''
-    gui_hint: '[1 , 1, 1, 1]'
-    label: target radar PW
-    min_len: '200'
-    orient: Qt.Horizontal
-    rangeType: float
-    start: 1e-6
-    step: '0.5e-6'
-    stop: '1'
-    value: 10e-3
-    widget: counter_slider
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [338, 2]
-    rotation: 0
-    state: true
-- name: tgt_pw_tau
-  id: variable
-  parameters:
-    comment: ''
-    value: round(tgt_pw/(1/samp_rate))
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [706, 6]
-    rotation: 0
-    state: true
-- name: track_spacing
-  id: variable
-  parameters:
-    comment: ''
-    value: round((tgt_pri/tgt_pw)*((100-percent_tracks)/100)*(tgt_pw_tau))
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [801, 9]
-    rotation: 0
-    state: true
 - name: analog_sig_source_x_0_0
   id: analog_sig_source_x
   parameters:
@@ -202,12 +244,12 @@ blocks:
     phase: '0'
     samp_rate: samp_rate
     type: complex
-    waveform: analog.GR_SIN_WAVE
+    waveform: analog.GR_SAW_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [37, 577]
+    coordinate: [42, 359]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_1
@@ -215,7 +257,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    comment: For a pulse compression radar
+    comment: For a pulse limited signal
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '2'
@@ -225,7 +267,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [294, 540]
+    coordinate: [246, 324]
     rotation: 0
     state: enabled
 - name: blocks_vector_source_x_0
@@ -245,7 +287,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [40, 491]
+    coordinate: [20, 278]
     rotation: 0
     state: enabled
 - name: fosphor_qt_sink_c_0
@@ -264,7 +306,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [975, 387]
+    coordinate: [1339, 417]
     rotation: 0
     state: disabled
 - name: iio_pluto_sink_0
@@ -279,14 +321,14 @@ blocks:
     comment: ''
     cyclic: 'False'
     filter: ''
-    frequency: freq
+    frequency: radio_freq
     samplerate: samp_rate
     uri: ''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [500, 174]
+    coordinate: [649, 271]
     rotation: 0
     state: enabled
 - name: iio_pluto_source_0
@@ -313,7 +355,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [722, 184]
+    coordinate: [1040, 232]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -331,7 +373,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
+    autoscale: 'True'
     average: '1.0'
     axislabels: 'True'
     bw: samp_rate
@@ -346,8 +388,8 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
-    fc: pulse_freq
+    ctrlpanel: 'True'
+    fc: radio_freq
     fftsize: '1024'
     freqhalf: 'True'
     grid: 'False'
@@ -393,7 +435,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [976, 266]
+    coordinate: [1359, 296]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_1
@@ -451,7 +493,7 @@ blocks:
     marker9: '-1'
     name: '""'
     nconnections: '1'
-    size: '100000'
+    size: '50000'
     srate: samp_rate/2
     stemplot: 'False'
     style1: '1'
@@ -490,32 +532,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [977, 186]
+    coordinate: [1358, 214]
     rotation: 0
     state: enabled
-- name: radar_signal_generator_fmcw_c_0
-  id: radar_signal_generator_fmcw_c
-  parameters:
-    affinity: ''
-    alias: ''
-    amplitude: '1'
-    comment: For an FMCW radar
-    freq_cw: pulse_freq
-    freq_sweep: round(pulse_freq/10)
-    len_key: '"packet_len"'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    samp_cw: tgt_pw_tau
-    samp_down: track_spacing
-    samp_rate: samp_rate
-    samp_up: round(tgt_pw_tau/2)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [30, 284]
-    rotation: 0
-    state: disabled
 
 connections:
 - [analog_sig_source_x_0_0, '0', blocks_multiply_xx_1, '1']
@@ -524,7 +543,6 @@ connections:
 - [iio_pluto_source_0, '0', fosphor_qt_sink_c_0, '0']
 - [iio_pluto_source_0, '0', qtgui_freq_sink_x_0, '0']
 - [iio_pluto_source_0, '0', qtgui_time_sink_x_1, '0']
-- [radar_signal_generator_fmcw_c_0, '0', iio_pluto_sink_0, '0']
 
 metadata:
   file_format: 1
