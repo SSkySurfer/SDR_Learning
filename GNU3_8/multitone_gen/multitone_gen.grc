@@ -1,0 +1,465 @@
+options:
+  parameters:
+    author: srs
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: srs 2021
+    description: multitone waveform generator
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: mutlitone_gen
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: multitone_gen
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: freq_spacing
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[1,1,1,1]'
+    label: Spacing of Tones
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: int
+    start: '25000'
+    step: '25000'
+    stop: '10000000'
+    value: '1000000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [564, 9]
+    rotation: 0
+    state: true
+- name: jam_button
+  id: variable_qtgui_push_button
+  parameters:
+    comment: ''
+    gui_hint: '[0,2, 1,1]'
+    label: JAM
+    pressed: '1'
+    released: '0'
+    type: bool
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [845, 16]
+    rotation: 0
+    state: true
+- name: num_tones
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[0,1,1,1]'
+    label: Number of Tones
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: int
+    start: '1'
+    step: '1'
+    stop: '100'
+    value: '3'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [420, 10]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '30000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [182, 13]
+    rotation: 0
+    state: enabled
+- name: sdr_freq
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[1,2,1,1]'
+    label: SDR frequency
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: int
+    start: '60000000'
+    step: '10000'
+    stop: '6000000000'
+    value: '136050000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [990, 14]
+    rotation: 0
+    state: true
+- name: tone_freq
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: '[1,0,1,1]'
+    label: Tone Frequency
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: int
+    start: '100'
+    step: '100'
+    stop: '10000000'
+    value: '100'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [697, 8]
+    rotation: 0
+    state: true
+- name: waveform
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: '[0,0,1,1]'
+    label: 'Select Waveform '
+    label0: Square
+    label1: Sawtooth
+    label2: Sine
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '3'
+    option0: '0'
+    option1: '1'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: int
+    value: '0'
+    widget: radio_buttons
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [275, 9]
+    rotation: 0
+    state: true
+- name: analog_sig_source_x_0_0_0_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: tone_freq+freq_spacing/2
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: complex
+    waveform: analog.GR_SIN_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [34, 327]
+    rotation: 0
+    state: disabled
+- name: analog_sig_source_x_0_0_0_0_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: Time Sync block
+    freq: tone_freq
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: complex
+    waveform: analog.GR_SIN_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 183]
+    rotation: 0
+    state: enabled
+- name: blocks_add_xx_0
+  id: blocks_add_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [312, 339]
+    rotation: 0
+    state: disabled
+- name: blocks_mute_xx_0
+  id: blocks_mute_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mute: not(jam_button)
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [508, 285]
+    rotation: 0
+    state: true
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      from random import seed\nfrom random import random\nfrom gnuradio import gr\n\
+      from scipy import signal\nfrom scipy.signal import find_peaks, peak_prominences\n\
+      import logging, sys\n\n#waveform = np.uint32\n#samp_rate = np.uint32\n#ctr_freq\
+      \ = np.uint32\n#num_tones = np.uint32\n#freq_spacing = np.uint32\n\nclass blk(gr.sync_block):\
+      \  # other base classes are basic_block, decim_block, interp_block\n    \"\"\
+      \"Embedded Python Block example - a simple multiply const\"\"\"\n\n    def __init__(self,\
+      \ waveform=0, samp_rate=10000000, ctr_freq=0, num_tones=3, freq_spacing=1000000):\
+      \  # only default arguments here\n        \"\"\"arguments to this function show\
+      \ up as parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n         \
+      \   self,\n            name='Embedded Python Block',   # will show up in GRC\n\
+      \            in_sig=[np.complex64],\n            out_sig=[np.complex64]\n  \
+      \      )\n        # if an attribute with the same name as a parameter is found,\n\
+      \        # a callback is registered (properties work, too).\n        self.waveform\
+      \ = waveform\n        self.samp_rate = samp_rate\n        self.ctr_freq=ctr_freq\n\
+      \        self.num_tones=num_tones\n        self.freq_spacing = freq_spacing\n\
+      \        \n\n    \t    \n    def work(self, input_items, output_items):\n\n\
+      \        def signaltonoise(s, axis=0, ddof=0): \n         a=np.asanyarray(s)\n\
+      \         m=a.mean(axis)\n         sd=a.std(axis=axis, ddof=ddof)\n        \
+      \ \n        # implement random seed for phase offset\n        seed(1)\n    \
+      \    num_samples=np.uint32\n        num_samples= input_items[0].size\n     \
+      \   #logging.debug(print(num_samples))\n\t\n\t#Create start and stop frequency\n\
+      \        if self.num_tones > 1:\n        \tspread     =  self.freq_spacing*self.num_tones\n\
+      \        \tstart_freq =  0 - spread/2\n        \tend_freq   =  0 + spread/2\n\
+      \        \tctr_freqs  =  np.linspace(start_freq, end_freq,self.num_tones)\n\
+      \        else:\n        \tctr_freqs  = (self.ctr_freq, self.ctr_freq)\n    \
+      \   \n        # Create empty vectors\t\n        temp_data = np.zeros((1,num_samples),dtype=np.complex64)\n\
+      \        data_new = np.zeros((1,num_samples),dtype=np.complex64)\n        mt\
+      \ = np.zeros((1,num_samples),dtype=np.complex64)\n   \t# Create time vector\n\
+      \        t = np.linspace(0,num_samples/self.samp_rate,num_samples)\n       \
+      \ \n        # Add the waveforms at spaced frequencies to make a multitone\n\
+      \        for n in range(len(ctr_freqs)):\n        \tif   self.waveform == 0:\n\
+      \        \t\tdata_new = signal.square(2*np.pi*(ctr_freqs[n]+self.ctr_freq)*t*random())\
+      \ \n        \telif self.waveform == 1:\n        \t\tdata_new = signal.sawtooth(2\
+      \ * np.pi * ctr_freqs[n] * t )\n        \telse:\n        \t\tdata_new = np.sin(2\
+      \ * np.pi * ctr_freqs[n] * t )\n        \t \n        \ttemp_data = temp_data\
+      \ + data_new\n        \t#signal.chirp(t, start_freq, num_samples/self.samp_rate,\
+      \ end_freq, method='linear')\n        \t\n        \t\n        mt = np.divide(temp_data[0:2],np.ndarray.max(abs(temp_data[0:2])))\t\
+      \n        output_items[0][:] = temp_data[0:2]\n        #print (mt[0:2][0])\n\
+      \        return len(output_items[0])\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    ctr_freq: '10000000'
+    freq_spacing: freq_spacing
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_tones: num_tones
+    samp_rate: samp_rate
+    waveform: waveform
+  states:
+    _io_cache: ('Embedded Python Block', 'blk', [('waveform', '0'), ('samp_rate',
+      '10000000'), ('ctr_freq', '0'), ('num_tones', '3'), ('freq_spacing', '1000000')],
+      [('0', 'complex', 1)], [('0', 'complex', 1)], 'Embedded Python Block example
+      - a simple multiply const', ['ctr_freq', 'freq_spacing', 'num_tones', 'samp_rate',
+      'waveform'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [255, 202]
+    rotation: 0
+    state: enabled
+- name: iio_pluto_sink_0
+  id: iio_pluto_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    attenuation1: '10.0'
+    auto_filter: 'True'
+    bandwidth: '20000000'
+    buffer_size: '32768'
+    comment: ''
+    cyclic: 'False'
+    filter: ''
+    frequency: sdr_freq
+    samplerate: samp_rate
+    uri: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [643, 156]
+    rotation: 0
+    state: true
+- name: iio_pluto_source_0
+  id: iio_pluto_source
+  parameters:
+    affinity: ''
+    alias: ''
+    auto_filter: 'True'
+    bandwidth: '20000000'
+    bbdc: 'True'
+    buffer_size: '32768'
+    comment: ''
+    filter: ''
+    frequency: sdr_freq
+    gain1: '''manual'''
+    manual_gain1: '60'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    quadrature: 'True'
+    rfdc: 'True'
+    samplerate: samp_rate
+    uri: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 154]
+    rotation: 0
+    state: true
+- name: qtgui_freq_sink_x_0
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    average: '1.0'
+    axislabels: 'True'
+    bw: '(num_tones*freq_spacing) '
+    color1: '"yellow"'
+    color10: '"dark blue"'
+    color2: '"magenta"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'False'
+    fc: tone_freq
+    fftsize: '2048'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: '[2,0,2,3]'
+    label: Relative Gain
+    label1: rx_data
+    label10: ''''''
+    label2: tx_data
+    label3: ''''''
+    label4: ''''''
+    label5: ''''''
+    label6: ''''''
+    label7: ''''''
+    label8: ''''''
+    label9: ''''''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '2'
+    showports: 'False'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: complex
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+    ymax: '10'
+    ymin: '-140'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1042, 248]
+    rotation: 0
+    state: true
+
+connections:
+- [analog_sig_source_x_0_0_0_0, '0', blocks_add_xx_0, '1']
+- [analog_sig_source_x_0_0_0_0_0, '0', blocks_add_xx_0, '0']
+- [analog_sig_source_x_0_0_0_0_0, '0', epy_block_0, '0']
+- [blocks_mute_xx_0, '0', iio_pluto_sink_0, '0']
+- [blocks_mute_xx_0, '0', qtgui_freq_sink_x_0, '1']
+- [epy_block_0, '0', blocks_mute_xx_0, '0']
+- [iio_pluto_source_0, '0', qtgui_freq_sink_x_0, '0']
+
+metadata:
+  file_format: 1
