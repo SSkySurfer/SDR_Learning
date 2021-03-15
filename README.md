@@ -32,8 +32,8 @@
 
 ### 1.3. Install specific libraries for Pluto 
 * Instructions here: https://wiki.analog.com/resources/tools-software/linux-software/gnuradio_windows
-#### 1.3.1. Install lib-iio here: https://github.com/analogdevicesinc/libiio 
-#### 1.3.2 Install libad9361-iio here: https://github.com/analogdevicesinc/libad9361-iio
+* 1.3.1. Install lib-iio here: https://github.com/analogdevicesinc/libiio 
+* 1.3.2 Install libad9361-iio here: https://github.com/analogdevicesinc/libad9361-iio
   
 ## GNUradio v3.8  
 ### NOTE: GNUradio v3.8 requires a new toolbox (gr-iio) and works best in Ubuntu. 
@@ -48,29 +48,29 @@
 - <em align="center">GUI to modify parameters in the transceiver flowgraph</em>
 
 ### 2.1. Download the grc flowgraph 
-#### 2.1.1. Download file named "NBFM_transceiver_Pluto.grc"
+* 2.1.1. Download file named "NBFM_transceiver_Pluto.grc"
 ### 2.2. Link the wav file to the flowgraph. Modify the file source to the wav file.
-#### 2.2.1. Download a test *.wav file on this repo under /exampleAudio
+* 2.2.1. Download a test *.wav file on this repo under /exampleAudio
 #### 2.2.2. Alternatively, use your own *wav. 
 ### 2.3. If using the voice transmit feature of the flowgraph
-#### 2.3.1. Link your computer's microphone to the flowgraph, by modifying the "Audio Source" block, and changing the "Device_Name". First, find to your computer's microphone name (e.g. Internal Microphone (Realtek Device)).
-#### 2.3.2. Replace the Device "Internal Microphone (Conexant SmartAudio HD)" with your Computer's Device_Name with "quotes" (e.g. "Internal Microphone (Realtek Device)")
+* 2.3.1. Link your computer's microphone to the flowgraph, by modifying the "Audio Source" block, and changing the "Device_Name". First, find to your computer's microphone name (e.g. Internal Microphone (Realtek Device)).
+* 2.3.2. Replace the Device "Internal Microphone (Conexant SmartAudio HD)" with your Computer's Device_Name with "quotes" (e.g. "Internal Microphone (Realtek Device)")
 ### 2.4. Modify the Audio Sink
-#### 2.4.1. Replace the Device "Speakers (Conexant SmartAudio HD)" with your Speakers' Device_Name
+* 2.4.1. Replace the Device "Speakers (Conexant SmartAudio HD)" with your Speakers' Device_Name
 ### 2.5. Plugin your PlutoSDR
  * Assuming not already plugged in (If ever encountnering errors, replugin the device)
 ### 2.6. Start the flowgraph and talk
-#### 2.6.1. Start flowgraph and talk into a radio on 141.050MHz (default receive frequency).
-#### 2.6.2. Listen to the playback on your computer audio. 
-#### 2.6.3. Or stop, enable the wave file sink, modify the file storage location, start the flowgraph again
+* 2.6.1. Start flowgraph and talk into a radio on 141.050MHz (default receive frequency).
+* 2.6.2. Listen to the playback on your computer audio. 
+* 2.6.3. Or stop, enable the wave file sink, modify the file storage location, start the flowgraph again
 ### 2.7. Change the GUI's TX/RX selector to TX 
-#### 2.7.1. This amplifies the TX gain, and lowers the RX gain
+* 2.7.1. This amplifies the TX gain, and lowers the RX gain
 ### 2.8. Try the wav file
-#### 2.8.1 Tune your handheld radio to 136.050MHz
-#### 2.8.2. Playback the wav file on your pc. Listen to the audio in your radio.
+* 2.8.1 Tune your handheld radio to 136.050MHz
+* 2.8.2. Playback the wav file on your pc. Listen to the audio in your radio.
 ### 2.9. Try the computer microphone
-#### 2.9.1. Stop, enable the "Audio Source" (i.e. microphone), disable the "Wav File Source" start
-#### 2.9.2. Start the flowgraph and talk into the mic. Listen to the voice on your handheld radio (or another SDR)
+* 2.9.1. Stop, enable the "Audio Source" (i.e. microphone), disable the "Wav File Source" start
+* 2.9.2. Start the flowgraph and talk into the mic. Listen to the voice on your handheld radio (or another SDR)
 ### 2.10. Modify the slider bars as required for other transmitters.
 
 
